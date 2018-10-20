@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        />
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:name="com.example.edouble.planapplication.Home_Fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/include2"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        />
+
+    <android.support.design.widget.BottomNavigationView
+        app:labelVisibilityMode="labeled"
+        android:id="@+id/navigation"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navigation"
+        android:background="?android:attr/windowBackground"/>
+
+</android.support.constraint.ConstraintLayout>
