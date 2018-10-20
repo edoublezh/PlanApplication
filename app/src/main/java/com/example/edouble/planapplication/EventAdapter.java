@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.example.edouble.planapplication.db.Event;
 import org.litepal.LitePal;
 import org.litepal.exceptions.DataSupportException;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
@@ -84,7 +86,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                 viewHolder.eventlistname.setTextColor(mContext.getResources().getColor(R.color.saddlebrown));
                 break;
             case 5:
-                viewHolder.eventlistname.setTextColor(mContext.getResources().getColor(R.color.darkred));
+                viewHolder.eventlistname.setTextColor(mContext.getResources().getColor(R.color.red));
                 break;
             case 6:
                 viewHolder.eventlistname.setTextColor(mContext.getResources().getColor(R.color.darkorange));
@@ -116,8 +118,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
 
                         switch (item.getItemId()){
                             case R.id.editevent:
+                                //List <String>
                                 //Toast.makeText(mContext,"1",Toast.LENGTH_SHORT).show();
+
                                 Intent intent=new Intent(mContext,EditeventActivity.class);
+                                //String data="emmm";
+                                //传参
+                                //Bundle bundle=new bundle();
+
+                                intent.putExtra("data",eventlist.getId());
                                 ((Activity)mContext).startActivity(intent);
                                 break;
                             case R.id.deleteevent:

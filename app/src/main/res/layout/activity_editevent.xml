@@ -21,7 +21,7 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/eventname"
+            android:id="@+id/editeventname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:lines="1"
@@ -66,7 +66,7 @@
         <EditText
             android:layout_width="0dp"
             android:layout_weight="3"
-            android:id="@+id/eventdate"
+            android:id="@+id/editeventdate"
             android:layout_height="wrap_content"
             />
     </LinearLayout>
@@ -84,7 +84,7 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/eventnote"
+            android:id="@+id/editeventnote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"/>
@@ -105,7 +105,7 @@
             android:layout_weight="1"/>
 
         <Spinner
-            android:id="@+id/eventcolor"
+            android:id="@+id/editeventcolor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"/>
@@ -113,7 +113,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/eventsure"
+        android:id="@+id/editeventsure"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="确认"
