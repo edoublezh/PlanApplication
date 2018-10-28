@@ -1,11 +1,14 @@
 package com.example.edouble.planapplication;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -28,6 +31,23 @@ public class AddplansActivity extends AppCompatActivity {
 
     private int colornum;
     private int frenum;//频率
+
+    //现在时间
+    private int nowyear;
+    private int nowmonth;
+    private int nowday;
+    //计划开始时间
+    private int beginyear;
+    private int beginmonth;
+    private int beginday;
+    //计划结束时间
+    private int endyear;
+    private int endmonth;
+    private int endday;
+    //
+    private int newyear;
+    private int newmonth;
+    private int newday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +119,7 @@ public class AddplansActivity extends AppCompatActivity {
             }
         });
 
+        //频率选择
         planfre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -138,6 +159,88 @@ public class AddplansActivity extends AppCompatActivity {
             }
         });
 
-         final Calendar calendar=
+         final Calendar calendar=Calendar.getInstance();
+         //获取现在时间
+         nowyear=calendar.get(Calendar.YEAR);
+         nowmonth=calendar.get(Calendar.MONTH)+1;
+         nowday=calendar.get(Calendar.DAY_OF_MONTH);
+
+         planbegindate.setText(String.format("%d年%d月%d日",nowyear,nowmonth,nowday));
+         planbegindate.setInputType(InputType.TYPE_NULL);
+         planbegindate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+             @Override
+             public void onFocusChange(View v, boolean hasFocus) {
+                 if (hasFocus){
+                     showbeginDatePickerDialog();
+                 }
+             }
+         });
+         planbegindate.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 showbeginDatePickerDialog();
+
+                 //beginyear=newyear;
+                 //beginmonth=newmonth;
+                 //beginday=newday;
+             }
+         });
+
+         planenddate.setText(String.format("%d年%d月%d日",nowyear,nowmonth,nowday));
+         planenddate.setInputType(InputType.TYPE_NULL);
+         planenddate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    showendDatePickerDialog();
+                }
+            }
+        });
+        planenddate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showendDatePickerDialog();
+
+                //endyear=newyear;
+                //endmonth=newmonth;
+                //endday=newday;
+            }
+        });
+
+
+
+
+
+    }
+
+    private void showbeginDatePickerDialog(){
+        Calendar c = Calendar.getInstance();
+        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // TODO Auto-generated method stub
+
+                beginyear=year;
+                beginmonth=monthOfYear+1;
+                beginday=dayOfMonth;
+                planbegindate.setText(beginyear+"年"+beginmonth+"月"+beginday+"日");
+            }
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+    }
+    private void showendDatePickerDialog(){
+        Calendar c = Calendar.getInstance();
+        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // TODO Auto-generated method stub
+
+                endyear=year;
+                endmonth=monthOfYear+1;
+                endday=dayOfMonth;
+                planenddate.setText(endyear+"年"+endmonth+"月"+endday+"日");
+            }
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
     }
 }

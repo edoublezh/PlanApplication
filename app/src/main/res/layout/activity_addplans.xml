@@ -138,7 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text=" 颜 色 "
+            android:text=" 频 率 "
             android:textSize="18sp"
             android:layout_weight="1"/>
 
