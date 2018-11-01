@@ -1,6 +1,5 @@
-package com.example.edouble.planapplication;
+package com.example.edouble.planapplication.event;
 
-import android.widget.TextView;
 
 public class Eventlist {
     private String eventlistname;//显示的列表中事件的名字

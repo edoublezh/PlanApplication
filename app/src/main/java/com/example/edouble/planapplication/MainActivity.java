@@ -1,27 +1,20 @@
 package com.example.edouble.planapplication;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
-import org.litepal.LitePal;
-
-import java.lang.reflect.Field;
+import com.example.edouble.planapplication.event.AddeventsActivity;
+import com.example.edouble.planapplication.event.Event_Fragment;
+import com.example.edouble.planapplication.plan.AddplansActivity;
+import com.example.edouble.planapplication.plan.Plan_Fragment;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -35,6 +35,7 @@
     <list>
 
         <mapping class="com.example.edouble.planapplication.db.Event"/>
+        <mapping class="com.example.edouble.planapplication.db.Plan"/>
     </list>
 
     <!--

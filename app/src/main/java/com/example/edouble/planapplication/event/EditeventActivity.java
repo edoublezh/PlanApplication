@@ -1,4 +1,4 @@
-package com.example.edouble.planapplication;
+package com.example.edouble.planapplication.event;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -16,13 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.example.edouble.planapplication.MainActivity;
+import com.example.edouble.planapplication.R;
 import com.example.edouble.planapplication.db.Event;
 
 import org.litepal.LitePal;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class EditeventActivity extends AppCompatActivity {
 

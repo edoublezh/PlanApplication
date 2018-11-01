@@ -18,17 +18,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddclassesActivity" />
-        <activity android:name=".AddplansActivity">
+        <activity android:name=".plan.AddplansActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".AddeventsActivity">
+        <activity android:name=".event.AddeventsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".EditeventActivity">
+        <activity android:name=".event.EditeventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".plan.EditplanActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

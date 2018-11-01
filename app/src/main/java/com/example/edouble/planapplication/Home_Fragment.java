@@ -9,9 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.example.edouble.planapplication.db.Event;
+import com.example.edouble.planapplication.db.Plan;
+import com.example.edouble.planapplication.event.EventAdapter;
+import com.example.edouble.planapplication.event.Eventlist;
+import com.example.edouble.planapplication.plan.PlanAdapter;
+import com.example.edouble.planapplication.plan.Planitem;
 
 import org.litepal.LitePal;
 
@@ -26,6 +30,8 @@ public class Home_Fragment extends Fragment{
     private RecyclerView mRecycleView;
     private RecyclerView.Adapter mAdapter;
     private List<Eventlist> eventlist=new ArrayList<>();
+
+    private List<Planitem> planitem=new ArrayList<>();
 
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -42,8 +48,7 @@ public class Home_Fragment extends Fragment{
 
         LitePal.getDatabase();
         eventlist.clear();
-        initData();
-//        initView();
+        initeventData();
         RecyclerView recyclerView=view.findViewById(R.id.eventslistview);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -51,8 +56,18 @@ public class Home_Fragment extends Fragment{
         recyclerView.setAdapter(adapter);
 
 
+        planitem.clear();
+        initplanData();
+
+        RecyclerView planrecyclerView=view.findViewById(R.id.planslistview);
+        LinearLayoutManager planlayoutManager=new LinearLayoutManager(getActivity());
+        planrecyclerView.setLayoutManager(planlayoutManager);
+        PlanAdapter planadapter=new PlanAdapter(planitem,getContext());
+        planrecyclerView.setAdapter(planadapter);
+
+
     }
-    private void initData(){
+    private void initeventData(){
 
         List<Event> events= LitePal.findAll(Event.class);
 
@@ -83,5 +98,19 @@ public class Home_Fragment extends Fragment{
             }
         }
 
+    }
+
+    private void initplanData(){
+        List<Plan> plans=LitePal.findAll(Plan.class);
+
+        for (Plan plan:plans){
+            String planbegindate=plan.getPlanbeginyear()+"年"+plan.getPlanbeginmonth()+"月"+plan.getPlanbeginday()+"日";
+            String planbegintime=String.format("%02d:%02d",plan.getPlanbeginhour(),plan.getPlanbeginminute());
+            String planenddate=plan.getPlanendyear()+"年"+plan.getPlanendmonth()+"月"+plan.getPlanendday()+"日";
+            String planendtime=String.format("%02d:%02d",plan.getPlanendhour(),plan.getPlanendminute());
+
+            Planitem list=new Planitem(plan.getPlanname(),planbegindate,planbegintime,planenddate,planendtime,plan.getPlancolor(),plan.getPlanfrequ(),plan.getId(),plan.getPlannote());
+            planitem.add(list);
+        }
     }
 }
